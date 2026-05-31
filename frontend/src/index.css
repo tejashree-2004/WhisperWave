@@ -1,0 +1,85 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * { box-sizing: border-box; }
+  
+  html, body {
+    background-color: #0a0a0f;
+    color: #e8e8f0;
+    font-family: 'DM Sans', sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: #12121a; }
+  ::-webkit-scrollbar-thumb { background: #2a2a3d; border-radius: 3px; }
+  ::-webkit-scrollbar-thumb:hover { background: #6c63ff; }
+}
+
+@layer components {
+  .glass {
+    background: rgba(26, 26, 38, 0.8);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(42, 42, 61, 0.6);
+  }
+
+  .glow-accent {
+    box-shadow: 0 0 20px rgba(108, 99, 255, 0.3);
+  }
+
+  .glow-signal {
+    box-shadow: 0 0 20px rgba(0, 229, 160, 0.3);
+  }
+
+  .btn-primary {
+    @apply bg-accent hover:bg-accent-glow text-white font-display font-semibold px-6 py-3 rounded-xl transition-all duration-200 hover:shadow-lg hover:shadow-accent/20 active:scale-95 disabled:opacity-40 disabled:cursor-not-allowed;
+  }
+
+  .btn-ghost {
+    @apply border border-border hover:border-accent text-text-dim hover:text-text font-display font-medium px-6 py-3 rounded-xl transition-all duration-200 active:scale-95;
+  }
+
+  .input-field {
+    @apply bg-surface border border-border focus:border-accent text-text placeholder-muted rounded-xl px-4 py-3 w-full outline-none transition-colors duration-200 font-body;
+  }
+
+  .card {
+    @apply bg-panel border border-border rounded-2xl p-6;
+  }
+}
+
+/* Waveform animation bars */
+.wave-bar {
+  display: inline-block;
+  width: 4px;
+  background: #6c63ff;
+  border-radius: 2px;
+  animation: waveform 1.2s ease-in-out infinite;
+}
+.wave-bar:nth-child(2) { animation-delay: 0.1s; background: #8b83ff; }
+.wave-bar:nth-child(3) { animation-delay: 0.2s; }
+.wave-bar:nth-child(4) { animation-delay: 0.3s; background: #00e5a0; }
+.wave-bar:nth-child(5) { animation-delay: 0.4s; }
+.wave-bar:nth-child(6) { animation-delay: 0.5s; background: #8b83ff; }
+.wave-bar:nth-child(7) { animation-delay: 0.6s; }
+
+@keyframes waveform {
+  0%, 100% { transform: scaleY(0.3); }
+  50% { transform: scaleY(1); }
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-up {
+  animation: fadeUp 0.5s ease forwards;
+}
+
+.animate-fade-up-1 { animation-delay: 0.05s; opacity: 0; }
+.animate-fade-up-2 { animation-delay: 0.1s; opacity: 0; }
+.animate-fade-up-3 { animation-delay: 0.15s; opacity: 0; }
+.animate-fade-up-4 { animation-delay: 0.2s; opacity: 0; }
